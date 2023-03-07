@@ -77,13 +77,19 @@ aws lambda invoke --function-name $FUNCTION_NAME \
 
 ## Clean up
 
-Delete the lambda function and role created earlier.
-
+1. Delete the lambda function.
 ```bash
-# Delete function
 aws lambda delete-function --function-name $FUNCTION_NAME
+```
 
-# Delete role
+2. To delete the role, first you need to detach all policies
+```bash
+aws iam detach-role-policy --role-name $ROLE_NAME \
+--policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+```
+
+3. Delete role created earlier
+```bash
 aws iam delete-role --role-name $ROLE_NAME
 ```
 
