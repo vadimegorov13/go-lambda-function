@@ -7,12 +7,12 @@ import (
 )
 
 type Event struct {
-	Name string `json:"what is your name?"`
-	Age  int    `json:"How old are you?"`
+	Name string `json:"name"`
+	Age  int    `json:"age"`
 }
 
 type Response struct {
-	Message string `json:"Answer"`
+	Message string `json:"message"`
 }
 
 func HandleLambdaEvent(event Event) (Response, error) {
